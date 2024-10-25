@@ -1,0 +1,48 @@
+/* Navbar.css */
+
+
+/* Set the navbar background color and position */
+.navbar {
+  background-color: #4ca7af;  /* Green background */
+  padding: 1rem;
+  position: fixed; /* Keep the navbar at the top */
+  top: 0;
+  left:0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure the navbar stays on top of other content */
+}
+
+/* Style the ul to remove default padding and margin */
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem; /* Adjust space between links */
+}
+
+/* Style individual list items */
+.navbar ul li {
+  display: inline;
+}
+
+/* Style the links */
+.navbar ul li a {
+  text-decoration: none;
+  color: white; /* White text for contrast */
+  font-weight: bold;
+  font-size: 1.2rem; /* Increase the font size */
+}
+
+/* Add hover effect */
+.navbar ul li a:hover {
+  color: #110202; /* Lighter hover effect */
+}
+
+/* Add space below navbar to avoid content overlap */
+body {
+  padding-top: 80px; /* Adjust the top padding based on the navbar height */
+}
