@@ -1,6 +1,7 @@
 // Home.jsx
 
 import React, { useState } from 'react';
+import InfoBox from '../components/InfoBox';
 import '../styles/Home.css';
 
 const Home = ({ flashcards, removeFlashcard, editFlashcard }) => {
@@ -13,6 +14,7 @@ const Home = ({ flashcards, removeFlashcard, editFlashcard }) => {
 
   return (
     <div className="home-container">
+      <InfoBox />
       <div className="search-bar">
         <input
           type="text"
