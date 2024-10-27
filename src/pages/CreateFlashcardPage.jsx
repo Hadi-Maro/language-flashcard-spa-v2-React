@@ -31,28 +31,30 @@ const CreateFlashcardPage = ({ addFlashcard, editMode, flashcardToEdit, updateFl
   return (
     <div>
       <h1>{editMode ? 'Edit Flashcard' : 'Create New Flashcard'}</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Term:</label>
-          <input 
-            type="text" 
-            value={term} 
-            onChange={(e) => setTerm(e.target.value)} 
-            required 
-          />
-        </div>
-        <div>
-          <label>Language:</label>
-          <select value={language} onChange={(e) => setLanguage(e.target.value)}>
-            <option value="fa">Persian</option>
-            <option value="es">Spanish</option>
-            <option value="fr">French</option>
-            <option value="de">German</option>
-            <option value="it">Italian</option>
-          </select>
-        </div>
-        <button type="submit">{editMode ? 'Update Flashcard' : 'Create Flashcard'}</button>
+      <form className="create-flashcard-form" onSubmit={handleSubmit}>
+        <input 
+          type="text" 
+          placeholder="Enter term" 
+          value={term} 
+          onChange={(e) => setTerm(e.target.value)} 
+        />
+        
+        <select 
+          value={language} 
+          onChange={(e) => setLanguage(e.target.value)} 
+        >
+          <option value="fa">Persian</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+          <option value="es">Spanish</option>
+          <option value="it">Italian</option>
+        </select>
+
+        <button type="submit">
+          Create Flashcard
+        </button>
       </form>
+
     </div>
   );
 };

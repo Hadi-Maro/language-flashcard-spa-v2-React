@@ -1,32 +1,39 @@
+// Home.jsx
+
 import React, { useState } from 'react';
-import FlashcardList from '../components/FlashcardList';
+import '../styles/Home.css';
 
 const Home = ({ flashcards, removeFlashcard, editFlashcard }) => {
-  // State for search term
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Filtering logic based on the search term
-  const filteredFlashcards = flashcards.filter(flashcard => 
-    flashcard.term.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    flashcard.translation.toLowerCase().includes(searchTerm.toLowerCase())
+  // Filter flashcards based on search term
+  const filteredFlashcards = flashcards.filter(flashcard =>
+    flashcard.term.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div>
-      <h1>Flashcards</h1>
-      {/* Search input for filtering flashcards */}
-      <input 
-        type="text" 
-        placeholder="Search flashcards..." 
-        value={searchTerm} 
-        onChange={(e) => setSearchTerm(e.target.value)} 
-      />
-      {/* Pass the filtered flashcards to the FlashcardList */}
-      <FlashcardList 
-        flashcards={filteredFlashcards} 
-        removeFlashcard={removeFlashcard} 
-        editFlashcard={editFlashcard} 
-      />
+    <div className="home-container">
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search flashcards..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
+      <div className="flashcards-grid">
+        {filteredFlashcards.map((flashcard) => (
+          <div
+            key={flashcard.id}
+            className="flashcard-item"
+            onClick={() => editFlashcard(flashcard)}
+          >
+            <h3>{flashcard.term}</h3>
+            <p>{flashcard.translation}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

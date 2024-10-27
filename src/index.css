@@ -16,41 +16,38 @@ body {
   padding-top: 80px; /* Prevent content overlap with navbar */
   padding-left: 10px;
   padding-right: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   min-width: 320px;
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Light Theme */
 body.light {
-  background-color: #ffffff; /* Light background */
-  color: #333333; /* Darker text */
+  background-color: #ffffff;
+  color: #333333;
 }
 
 body.light a {
-  color: #646cff; /* Light theme link color */
+  color: #646cff;
 }
 
 body.light button {
-  background-color: #f9f9f9; /* Light button */
+  background-color: #f9f9f9;
   color: #333;
 }
 
 /* Dark Theme */
 body.dark {
-  background-color: #333333; /* Dark background */
-  color: #ffffff; /* Light text */
+  background-color: #333333;
+  color: #ffffff;
 }
 
 body.dark a {
-  color: #747bff; /* Dark theme link color */
+  color: #747bff;
 }
 
 body.dark button {
-  background-color: #444444; /* Dark button */
+  background-color: #444444;
   color: #fff;
 }
 
@@ -61,15 +58,13 @@ h1 {
   text-align: center;
 }
 
-/* Button styling */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  margin: 5px 5px;
-  padding: 0.6em 2.2em;
+  margin: 5px;
+  padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: bold;
-  font-family: inherit;
   cursor: pointer;
   transition: background-color 0.25s;
 }
@@ -78,14 +73,40 @@ button:hover {
   background-color: #d1cccc;
 }
 
-button:focus {
-  outline: none;
-}
-
-/* Root container styles */
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+/* Styles for the form layout */
+.create-flashcard-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* Adds space between form elements */
+  margin-top: 20px;
+}
+
+.create-flashcard-form input,
+.create-flashcard-form select,
+.create-flashcard-form button {
+  padding: 0.6em;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 100%; /* Full width within the form */
+  max-width: 400px; /* Limits the width on larger screens */
+}
+
+.create-flashcard-form button {
+  background-color: #801091c9;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-flashcard-form button:hover {
+  background-color: #8f81d6d0;
 }
