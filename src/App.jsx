@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import CreateFlashcardPage from './pages/CreateFlashcardPage';
 import StudyFlashcardsPage from './pages/StudyFlashcardsPage';
@@ -53,8 +54,9 @@ const App = () => {
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
-    document.documentElement.className = theme;
+    document.body.className = theme; // Apply theme class to body element
   }, [theme]);
+  
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
@@ -108,6 +110,7 @@ const App = () => {
           <Error />
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
 };

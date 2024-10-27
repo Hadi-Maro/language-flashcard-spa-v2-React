@@ -4,6 +4,7 @@
 .flashcard-container {
     width: 400px;
     height: 300px;
+    background-color: rgba(77, 107, 10, 0.858);
     perspective: 1000px; /* Perspective for the 3D flip effect */
     cursor: pointer; /* Show pointer on hover */
     margin: 60px auto; /* Center the card and add spacing */
@@ -38,9 +39,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 10px;
-    background-color: white;
+    background-color: rgb(173, 177, 92);
     padding: 15px; /* Space around the content inside each flashcard side */
     box-sizing: border-box; /* Ensure padding is included in the size */
   }

@@ -1,27 +1,46 @@
 /* Navbar.css */
 
-
-/* Set the navbar background color and position */
+/* Navbar container styles */
 .navbar {
-  background-color: #4ca7af;  /* Green background */
+  background-color: #801091c9;
   padding: 1rem;
-  position: fixed; /* Keep the navbar at the top */
+  position: fixed;
   top: 0;
-  left:0;
+  left: 0;
   width: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center; /* Center vertically */
+  justify-content: space-between; /* Button on the left, links centered */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensure the navbar stays on top of other content */
+  z-index: 1000;
 }
 
-/* Style the ul to remove default padding and margin */
+/* Style for the navButton on the left */
+.navButton {
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #c3c01fc8;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navButton:hover {
+  background-color: #8f81d6d0;
+}
+
+/* Flex container for navigation links */
 .navbar ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   gap: 2rem; /* Adjust space between links */
+  justify-content: center; /* Center links */
+  flex-grow: 1; /* Allow links to take up available space */
 }
 
 /* Style individual list items */
@@ -29,20 +48,19 @@
   display: inline;
 }
 
-/* Style the links */
+/* Link styles */
 .navbar ul li a {
   text-decoration: none;
-  color: white; /* White text for contrast */
+  color: white;
   font-weight: bold;
-  font-size: 1.2rem; /* Increase the font size */
+  font-size: 1.2rem;
 }
 
-/* Add hover effect */
 .navbar ul li a:hover {
-  color: #110202; /* Lighter hover effect */
+  color: #110202;
 }
 
 /* Add space below navbar to avoid content overlap */
 body {
-  padding-top: 80px; /* Adjust the top padding based on the navbar height */
+  padding-top: 80px;
 }
