@@ -26,13 +26,13 @@ const Home = ({ flashcards, removeFlashcard, editFlashcard }) => {
 
       <div className="flashcards-grid">
         {filteredFlashcards.map((flashcard) => (
-          <div
-            key={flashcard.id}
-            className="flashcard-item"
-            onClick={() => editFlashcard(flashcard)}
-          >
+          <div key={flashcard.id} className="flashcard-item">
             <h3>{flashcard.term}</h3>
             <p>{flashcard.translation}</p>
+            <div className="flashcard-buttons">
+              <button onClick={() => editFlashcard(flashcard)} className="edit-btn">Edit</button>
+              <button onClick={() => removeFlashcard(flashcard.id)} className="delete-btn">Delete</button>
+            </div>
           </div>
         ))}
       </div>
