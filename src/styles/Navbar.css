@@ -2,7 +2,7 @@
 
 /* Navbar container */
 .navbar {
-  background: linear-gradient(90deg, #801091, #c13fac); /* Gradient background */
+  background: linear-gradient(180deg, #801091, #c13fac); /* Gradient background */
   padding: 1rem;
   position: fixed;
   top: 0;

@@ -1,5 +1,3 @@
-/* index.css */
-
 :root {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -80,6 +78,7 @@ button:hover {
   text-align: center;
 }
 
+
 /* Styles for the form layout */
 .create-flashcard-form {
   display: flex;
@@ -138,6 +137,11 @@ button:hover {
   .create-flashcard-form button {
     max-width: 100%; /* Full width on smaller screens */
     font-size: 0.9em;
+  }
+
+  .flashcard-item {
+    max-width: 100%;
+    padding: 15px;
   }
 }
 

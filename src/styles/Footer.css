@@ -1,9 +1,9 @@
 /* styles / Footer.css */
 
 .footer {
-  background: linear-gradient(90deg, #801091, #c13fac); /* Gradient background */
+  background: linear-gradient(0deg, #801091, #c13fac); /* Gradient background */
   color: white;
-  padding: 1rem 2rem;
+  padding: 8px; /* Slight padding for content spacing */
   text-align: center;
   font-size: 0.9rem;
   font-weight: bold;
@@ -11,29 +11,16 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 100%; /* Full width */
+  height: 60px; /* Fixed height for consistency */
   z-index: 1000;
   transition: background-color 0.3s ease;
-
 }
 
-/* Adjust font size and spacing for smaller screens */
+/* Adjust font size and padding for smaller screens */
 @media (max-width: 768px) {
   .footer {
-    font-size: 0.8rem;
-    padding: 0.8rem 1.5rem;
+    font-size: 0.6rem;
+    padding: 4px; 
   }
-}
-
-
-
-/* Hover effect for interactive elements (for having links in the footer) */
-.footer a {
-  color: #ffd84c;
-  text-decoration: underline;
-  transition: color 0.3s ease;
-}
-
-.footer a:hover {
-  color: #ffffff;
 }

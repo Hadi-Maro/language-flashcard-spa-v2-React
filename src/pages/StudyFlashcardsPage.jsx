@@ -1,3 +1,5 @@
+// StudyFlashcardsPage.jsx
+
 import React, { useState } from 'react';
 import '../styles/Flashcard.css';
 
@@ -6,12 +8,12 @@ const StudyFlashcardsPage = ({ flashcards }) => {
   const [flipped, setFlipped] = useState(false);
 
   const handleNext = () => {
-    setFlipped(false);
+    setFlipped(false); // Reset flip state when moving to the next card
     setCurrentIndex((prevIndex) => (prevIndex + 1) % flashcards.length);
   };
 
   const handlePrevious = () => {
-    setFlipped(false);
+    setFlipped(false); // Reset flip state when moving to the previous card
     setCurrentIndex((prevIndex) => (prevIndex - 1 + flashcards.length) % flashcards.length);
   };
 
