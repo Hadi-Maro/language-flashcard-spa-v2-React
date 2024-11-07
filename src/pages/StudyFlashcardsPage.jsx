@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
-import '../styles/Flashcard.css';  // Import the CSS file
+import '../styles/Flashcard.css';
 
 const StudyFlashcardsPage = ({ flashcards }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
 
   const handleNext = () => {
-    setFlipped(false);  // Reset flipping when going to next card
+    setFlipped(false);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % flashcards.length);
   };
 
   const handlePrevious = () => {
-    setFlipped(false);  // Reset flipping when going to previous card
+    setFlipped(false);
     setCurrentIndex((prevIndex) => (prevIndex - 1 + flashcards.length) % flashcards.length);
   };
 
   const toggleFlip = () => {
-    setFlipped(!flipped);  // Flip the card
+    setFlipped(!flipped);
   };
 
   const currentFlashcard = flashcards[currentIndex];
 
   return (
-    <div>
+    <div className="container mt-5 text-center">
       <h1>Study Flashcards</h1>
       {flashcards.length > 0 ? (
         <div className="flashcard-container" onClick={toggleFlip}>
@@ -36,11 +36,11 @@ const StudyFlashcardsPage = ({ flashcards }) => {
           </div>
         </div>
       ) : (
-        <p>No flashcards available. Please create some first!</p>
+        <p className="mt-4">No flashcards available. Please create some first!</p>
       )}
-      <div>
-        <button onClick={handlePrevious}>Previous</button>
-        <button onClick={handleNext}>Next</button>
+      <div className="d-flex justify-content-between mt-3">
+        <button onClick={handlePrevious} className="btn btn-secondary">Previous</button>
+        <button onClick={handleNext} className="btn btn-secondary">Next</button>
       </div>
     </div>
   );

@@ -1,31 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const CreateFlashcardPage = ({ addFlashcard, editMode, flashcardToEdit, updateFlashcard, translateText }) => {
   const [term, setTerm] = useState(flashcardToEdit ? flashcardToEdit.term : '');
   const [translation, setTranslation] = useState(flashcardToEdit ? flashcardToEdit.translation : '');
-  const [language, setLanguage] = useState('fa'); // Set default target language to Persian
+  const [language, setLanguage] = useState(flashcardToEdit ? flashcardToEdit.language : 'fa'); // Set default target language or from flashcard
+
+  // Function to translate whenever term or language changes
+  useEffect(() => {
+    const fetchTranslation = async () => {
+      if (term) {
+        const translatedText = await translateText(term, language);
+        setTranslation(translatedText);
+      }
+    };
+    fetchTranslation();
+  }, [term, language, translateText]); // Re-run effect when term or language changes
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (editMode) {
-      updateFlashcard({ ...flashcardToEdit, term, translation });
+      // Update the flashcard with the new term and translated text in chosen language
+      updateFlashcard({ ...flashcardToEdit, term, translation, language });
     } else {
-      // Translate term to the selected language
-      const translatedText = await translateText(term, language);
+      // Add new flashcard with translated text
       const newFlashcard = {
         id: Date.now(),
         term,
-        translation: translatedText,
+        translation,
         language,
       };
       addFlashcard(newFlashcard);
     }
 
-    // Clear the form
+    // Clear the form fields after submission
     setTerm('');
     setTranslation('');
-    setLanguage('fa'); // Reset to Persian
+    setLanguage('fa'); // Reset language to default (Persian)
   };
 
   return (
@@ -51,10 +62,9 @@ const CreateFlashcardPage = ({ addFlashcard, editMode, flashcardToEdit, updateFl
         </select>
 
         <button type="submit">
-          Create Flashcard
+          {editMode ? 'Update Flashcard' : 'Create Flashcard'}
         </button>
       </form>
-
     </div>
   );
 };

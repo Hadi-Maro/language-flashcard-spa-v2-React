@@ -1,3 +1,5 @@
+// Components / error.jsx
+
 import React from 'react';
 
 const Error = () => {

@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+// App.jsx
+
+
+import React, { useState, useEffect, useContext } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './components/Navbar';
@@ -8,10 +11,11 @@ import CreateFlashcardPage from './pages/CreateFlashcardPage';
 import StudyFlashcardsPage from './pages/StudyFlashcardsPage';
 import Error from './components/Error';
 import './index.css';
+//import { ThemeContext } from './context/ThemeContext';  // Import ThemeContext
+import { ThemeContext, ThemeProvider } from './context/ThemeContext';
 
 
-
-
+// Translation function for API integration
 const translateText = async (text, targetLang) => {
   try {
     const response = await axios.post(
@@ -31,17 +35,11 @@ const translateText = async (text, targetLang) => {
   }
 };
 
-
-
 const App = () => {
+  const { theme } = useContext(ThemeContext);  // Access theme from ThemeContext
   const [flashcards, setFlashcards] = useState(() => {
     const savedFlashcards = localStorage.getItem('flashcards');
     return savedFlashcards ? JSON.parse(savedFlashcards) : [];
-  });
-
-  const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('theme');
-    return savedTheme || 'light';
   });
 
   const [editMode, setEditMode] = useState(false);
@@ -51,16 +49,6 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem('flashcards', JSON.stringify(flashcards));
   }, [flashcards]);
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
-    document.body.className = theme; // Apply theme class to body element
-  }, [theme]);
-  
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
 
   const addFlashcard = (newFlashcard) => {
     setFlashcards([...flashcards, newFlashcard]);
@@ -78,39 +66,45 @@ const App = () => {
   };
 
   const updateFlashcard = (updatedFlashcard) => {
-    const updatedFlashcards = flashcards.map((flashcard) =>
-      flashcard.id === updatedFlashcard.id ? updatedFlashcard : flashcard
+    setFlashcards((prevFlashcards) =>
+      prevFlashcards.map((flashcard) =>
+        flashcard.id === updatedFlashcard.id ? updatedFlashcard : flashcard
+      )
     );
-    setFlashcards(updatedFlashcards);
     setEditMode(false);
     setFlashcardToEdit(null);
     history.push('/');
   };
+  
+  
 
   return (
-    <div>
-      <Navbar toggleTheme={toggleTheme} currentTheme={theme} />
+    <div className={`app ${theme}`}>
+      <Navbar />  {/* Navbar component */}
       <Switch>
         <Route path="/" exact>
           <Home flashcards={flashcards} removeFlashcard={removeFlashcard} editFlashcard={editFlashcard} />
         </Route>
+
         <Route path="/create">
-          <CreateFlashcardPage 
-            addFlashcard={addFlashcard} 
-            editMode={editMode} 
-            flashcardToEdit={flashcardToEdit} 
+          <CreateFlashcardPage
+            addFlashcard={addFlashcard}
+            editMode={editMode}
+            flashcardToEdit={flashcardToEdit}
             updateFlashcard={updateFlashcard}
-            translateText={translateText} 
+            translateText={translateText}
           />
         </Route>
+
         <Route path="/study">
           <StudyFlashcardsPage flashcards={flashcards} />
         </Route>
+
         <Route path="*">
           <Error />
         </Route>
       </Switch>
-      <Footer />
+      <Footer />  {/* Footer component */}
     </div>
   );
 };

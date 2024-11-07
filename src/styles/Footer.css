@@ -1,4 +1,4 @@
-/* Footer.css */
+/* styles / Footer.css */
 
 .footer {
   background: linear-gradient(90deg, #801091, #c13fac); /* Gradient background */
@@ -25,7 +25,9 @@
   }
 }
 
-/* Hover effect for interactive elements (if you have links in the footer) */
+
+
+/* Hover effect for interactive elements (for having links in the footer) */
 .footer a {
   color: #ffd84c;
   text-decoration: underline;
