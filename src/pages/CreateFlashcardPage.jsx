@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const CreateFlashcardPage = ({ addFlashcard, editMode, flashcardToEdit, updateFlashcard, translateText }) => {
   const [term, setTerm] = useState(flashcardToEdit ? flashcardToEdit.term : '');
   const [translation, setTranslation] = useState(flashcardToEdit ? flashcardToEdit.translation : '');
-  const [language, setLanguage] = useState(flashcardToEdit ? flashcardToEdit.language : 'fa'); // Set default target language or from flashcard
+  const [language, setLanguage] = useState(flashcardToEdit ? flashcardToEdit.language : 'fa');
 
   // Function to translate whenever term or language changes
   useEffect(() => {
@@ -59,6 +59,8 @@ const CreateFlashcardPage = ({ addFlashcard, editMode, flashcardToEdit, updateFl
           <option value="de">German</option>
           <option value="es">Spanish</option>
           <option value="it">Italian</option>
+          <option value="JA">Japanese</option>
+          <option value="ZH">Chinese (Mandarin)</option>
         </select>
 
         <button type="submit">
