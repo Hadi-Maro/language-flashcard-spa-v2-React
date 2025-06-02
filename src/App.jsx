@@ -17,9 +17,10 @@ import { ThemeContext, ThemeProvider } from './context/ThemeContext';
 
 // Translation function for API integration
 const translateText = async (text, targetLang) => {
+  const API_KEY = import.meta.env.VITE_GOOGLE_TRANSLATE_API_KEY;
   try {
     const response = await axios.post(
-      `https://translation.googleapis.com/language/translate/v2?key=AIzaSyA1Pe-N7ShOAE-SJPoDKpTEHkUpbfkmnlw`,
+      `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`,
       {
         q: text,
         source: 'en',
@@ -31,9 +32,10 @@ const translateText = async (text, targetLang) => {
     return response.data.data.translations[0].translatedText;
   } catch (error) {
     console.error("Translation Error:", error);
-    return text; // Fallback if error occurs
+    return text;
   }
 };
+
 
 const App = () => {
   const { theme } = useContext(ThemeContext);  // Access theme from ThemeContext
